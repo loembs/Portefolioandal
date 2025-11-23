@@ -5,6 +5,7 @@ export default function About() {
       <p className='text-gray-600 text-lg leading-relaxed'>
         Je suis Nat'si POATHY, développeur passionné spécialisé en React, Python, Java et Symfony.
         J'aime créer des applications modernes, performantes et centrées sur l'utilisateur.
+        De plus, je m'intéresse à l'ingénierie des prompts et à l'automatisation des tâches grâce à l'IA, notamment avec des outils comme n8n.
       </p>
     </section>
   )
