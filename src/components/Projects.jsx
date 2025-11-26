@@ -38,7 +38,16 @@ const projects = [
     tech: ['Angular', 'Java', 'PostgreSQL','supabase'],
     link: 'https://studio-hub-5vlw.vercel.app',
     image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1762950172/site5_hggj27.png'
+  },
+  {
+    id: 6,
+    title: 'Green_workspace',
+    description: 'Tableau de bord interne / gestion de flotte.',
+    tech: ['React', 'Vite', 'PostgreSQL','supabase'],
+    link: 'https://greenmobility-workflow.vercel.app',
+    image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1764164995/greenmobility_01_bto4i7.png'
   }
+
 
 
 ]
