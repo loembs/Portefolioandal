@@ -10,7 +10,7 @@ export const translations = {
     hero: {
       badge: 'Développeur Fullstack Java & JavaScript',
       greeting: 'Bonjour, je suis',
-      bio: "Développeur Fullstack Junior spécialisé en Java et JavaScript, avec une expérience pratique acquise en entreprise et à travers plusieurs projets en production. J'ai contribué au développement et au déploiement d'applications web dans un cadre agile. Basé à Dakar, Sénégal.",
+      bio: "Développeur Fullstack  spécialisé en Java et JavaScript, avec une expérience pratique acquise en entreprise et à travers plusieurs projets en production. J'ai contribué au développement et au déploiement d'applications web dans un cadre agile. Basé à Dakar, Sénégal.",
       cta1: 'Voir mes projets',
       cta2: 'Me contacter',
       available: 'Disponible pour missions freelance',

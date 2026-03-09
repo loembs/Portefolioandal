@@ -67,30 +67,24 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className={`mt-6 flex flex-wrap gap-4 text-xs ${isDark ? 'text-secondary' : 'text-gray-500'}`}>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                {th.available}
-              </span>
-              <span>· {th.location}</span>
-              <a href="https://github.com/loembs" target="_blank" rel="noreferrer" className="hover:text-yellow transition-colors">
-                github.com/loembs
-              </a>
-              <a href="mailto:patricknatsi.learning@gmail.com" className="hover:text-yellow transition-colors">
-                patricknatsi.learning@gmail.com
-              </a>
-            </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className={`absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-xs ${
-        isDark ? 'text-secondary' : 'text-gray-400'
-      }`}>
-        <span>{th.scroll}</span>
-        <div className={`w-0.5 h-8 bg-gradient-to-b ${isDark ? 'from-secondary' : 'from-gray-400'} to-transparent`} />
-      </div>
+      {/* Scroll down arrow */}
+      <button
+        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+        aria-label="Défiler vers le bas"
+        className={`absolute bottom-8 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center border animate-bounce transition-colors ${
+          isDark
+            ? 'bg-black-100/80 border-white/10 text-secondary hover:text-yellow hover:border-yellow/40'
+            : 'bg-white/80 border-gray-200 text-gray-400 hover:text-indigo-600 hover:border-indigo-300'
+        }`}
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
     </section>
   )
 }
