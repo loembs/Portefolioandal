@@ -1,110 +1,84 @@
-const projects = [
-  {
-    id: 1,
-    title: 'Art & culture ethiopienne',
-    description: 'Site E-commerce .',
-    tech: ['React', 'Tailwind', 'Springboot'],
-    link: 'https://www.geezacultures.com',
-    image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1762950174/site1_bkgifd.png'
-  },
-  {
-    id: 2,
-    title: 'ANDAL CREATIVE',
-    description: 'Site professionnel pour une agence de création.',
-    tech: ['Spring Boot', 'PostgreSQL', 'React js'],
-    link: 'https://www.andalcreative.com',
-    image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1762950174/site2_shp2pt.png'
-  },
-  {
-    id: 3,
-    title: 'Apple Store',
-    description: 'Site e-commerce de produits Apple.',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    link: 'https://apple-store-hazel.vercel.app',
-    image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1762950174/site3_ajibvs.png'
-  },
-  {
-    id: 4,
-    title: 'Loumo Store',
-    description: 'Site e-commerce de vente de vêtements et acessoires .',
-    tech: ['React', 'Java', 'MongoDB'],
-    link: 'https://loumo-frontend-kd7v.vercel.app',
-    image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1762950178/site4_k1gutg.png'
-  },
-  {
-    id: 5,
-    title: 'Studio Hub',
-    description: 'plateforme de gestion de projet , rendez-vous , facturation en temps reel .',
-    tech: ['Angular', 'Java', 'PostgreSQL','supabase'],
-    link: 'https://studio-hub-5vlw.vercel.app',
-    image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1762950172/site5_hggj27.png'
-  },
-  {
-    id: 6,
-    title: 'Green_workspace',
-    description: 'Tableau de bord interne / gestion de flotte.',
-    tech: ['React', 'Vite', 'PostgreSQL','supabase'],
-    link: 'https://greenmobility-workflow.vercel.app',
-    image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1764164995/greenmobility_01_bto4i7.png'
-  }
+import { useApp } from '../AppContext'
 
+function ProjectCard({ p, isDark }) {
+  const heading = isDark ? 'text-white' : 'text-gray-900'
+  const body = isDark ? 'text-secondary' : 'text-gray-600'
+  const tagBg = isDark ? 'bg-black-100 border-white/10 text-secondary' : 'bg-indigo-50 border-indigo-100 text-indigo-700'
 
-
-]
-
-const projectsIA = [
-  {
-    id: 6,
-    title: 'Calendly Block',
-    description: 'Connectez votre calendrier pour gérer les événements, bloquer votre travail et prendre des notes de réunion, grâce à l’IA ',
-    tech: ['n8n'],
-    link: 'https://studio-hub-5vlw.vercel.app',
-    image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1763941590/ia01_kpqtnq.png'
-  },
-  {
-    id: 7,
-    title: 'Organisation de tâches',
-    description: 'Connecter vos applications ,vous pourrez poser des questions au chatbot sur tout ce qui se trouve dans vos applications connectées.',
-    tech: ['n8n'],
-    link: 'https://studio-hub-5vlw.vercel.app',
-    image: 'https://res.cloudinary.com/dlna2kuo1/image/upload/v1763941590/ia02_wqbvqv.png'
-  }
-]
+  return (
+    <a
+      href={p.link}
+      target="_blank"
+      rel="noreferrer"
+      className={`group flex flex-col overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${
+        isDark
+          ? 'bg-tertiary border-white/5 shadow-card hover:border-yellow/20'
+          : 'bg-white border-gray-200 shadow-md hover:border-indigo-200 hover:shadow-lg'
+      }`}
+    >
+      <div className="relative h-52 overflow-hidden">
+        <img
+          src={p.image}
+          alt={p.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+      <div className="p-5 flex flex-col flex-1">
+        <h3 className={`font-bold text-[18px] ${p.gradient}`}>{p.title}</h3>
+        <p className={`mt-2 text-sm leading-relaxed flex-1 ${body}`}>{p.description}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {p.tech.map(tech => (
+            <span key={tech} className={`text-[11px] font-medium px-2.5 py-1 rounded-full border ${tagBg}`}>
+              #{tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </a>
+  )
+}
 
 export default function Projects() {
+  const { isDark, t } = useApp()
+  const pr = t.projects
+
+  const label = isDark ? 'text-secondary' : 'text-indigo-600'
+  const heading = isDark ? 'text-white' : 'text-gray-900'
+  const body = isDark ? 'text-secondary' : 'text-gray-600'
+  const divider = isDark ? 'bg-white/10' : 'bg-gray-200'
+
   return (
-    <section id='projects' className='max-w-6xl mx-auto px-6 py-16'>
-      <h2 className='text-3xl font-bold mb-8 text-center'>Mes Projets</h2>
-      <h3 className='text-3xl font-bold mb-8 text-center'>Developpement Web</h3>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {projects.map(p => (
-          <a key={p.id} href={p.link} target='_blank' rel='noreferrer' className='block bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden'>
-            <img src={p.image} alt={p.title} className='w-full h-48 object-cover'/>
-            <div className='p-4'>
-              <h3 className='font-semibold text-lg'>{p.title}</h3>
-              <p className='text-sm text-gray-600 mt-1'>{p.description}</p>
-              <div className='mt-2 flex flex-wrap gap-2 text-xs'>
-                {p.tech.map(t => <span key={t} className='px-2 py-1 border rounded-full'>{t}</span>)}
-              </div>
-            </div>
-          </a>
-        ))}
+    <section id="projects" className="max-w-7xl mx-auto px-6 sm:px-16 py-16">
+      <div>
+        <p className={`text-sm font-medium uppercase tracking-widest ${label}`}>{pr.label}</p>
+        <h2 className={`mt-2 font-black text-[30px] sm:text-[40px] md:text-[48px] leading-tight ${heading}`}>{pr.title}</h2>
       </div>
-      <br />
-      <h3 className='text-3xl font-bold mb-8 text-center'>Automatisation des tâches grâce à l'IA</h3>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {projectsIA.map(p => (
-          <a key={p.id} href={p.link} target='_blank' rel='noreferrer' className='block bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden'>
-            <img src={p.image} alt={p.title} className='w-full h-48 object-cover'/>
-            <div className='p-4'>
-              <h3 className='font-semibold text-lg'>{p.title}</h3>
-              <p className='text-sm text-gray-600 mt-1'>{p.description}</p>
-              <div className='mt-2 flex flex-wrap gap-2 text-xs'>
-                {p.tech.map(t => <span key={t} className='px-2 py-1 border rounded-full'>{t}</span>)}
-              </div>
-            </div>
-          </a>
-        ))}
+
+      <p className={`mt-4 text-[16px] max-w-3xl leading-[30px] ${body}`}>{pr.bio}</p>
+
+      {/* Web projects */}
+      <div className="mt-10">
+        <h3 className={`font-semibold text-[16px] mb-6 flex items-center gap-3 ${heading}`}>
+          <span className={`h-px flex-1 max-w-xs ${divider}`} />
+          {pr.webTitle}
+          <span className={`h-px flex-1 max-w-xs ${divider}`} />
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {pr.items.map(p => <ProjectCard key={p.id} p={p} isDark={isDark} />)}
+        </div>
+      </div>
+
+      {/* IA projects */}
+      <div className="mt-14">
+        <h3 className={`font-semibold text-[16px] mb-6 flex items-center gap-3 ${heading}`}>
+          <span className={`h-px flex-1 max-w-xs ${divider}`} />
+          {pr.iaTitle}
+          <span className={`h-px flex-1 max-w-xs ${divider}`} />
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {pr.iaItems.map(p => <ProjectCard key={p.id} p={p} isDark={isDark} />)}
+        </div>
       </div>
     </section>
   )
